@@ -1,11 +1,12 @@
 const express = require("express");
 const connect = require("./config/database");
+const { PORT } = require("./config/serverConfig");
 const Comment = require("./models/comment");
 const TweetRepository = require("./repository/tweet-repository");
 
 const app = express();
 
-app.listen(3000, async () => {
+app.listen(PORT, async () => {
     console.log("Server Started");
     await connect();
     console.log("MongoDB Connected");

@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
-
+const { DB_URL } = require("./serverConfig");
 const connect = async () => {
-    await mongoose.connect(
-        "mongodb+srv://drkspark:AlphA321@cluster0.iovairz.mongodb.net/twitter"
-    );
-    // await mongoose.connect('mongodb://localhost/twitter_Dev');
+    await mongoose.connect(DB_URL);
 };
 
 module.exports = connect;
