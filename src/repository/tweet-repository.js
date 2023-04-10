@@ -19,6 +19,16 @@ class TweetRepository {
         }
     }
 
+    // By default it will get first 10 Comments
+    async getFew(offset = 0, limit = 10) {
+        try {
+            const tweet = await Tweet.find().skip(offset).limit(limit);
+            return tweet;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     async getWithComment(id) {
         try {
             const tweet = await Tweet.findById(id).populate({

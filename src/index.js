@@ -13,6 +13,9 @@ app.listen(3000, async () => {
     const tweetRepo = new TweetRepository();
     // Now when we get our Tweet the Comments field is Storing the objId of the Comment and not the Comment data, we can populate it
     // with the Comment data, by using autopopulate
-    const tweet = await tweetRepo.getWithComment("64340d2d3bc6d3d46148f24a");
-    console.log(tweet);
+    // const tweet = await tweetRepo.getFew();
+    // console.log(tweet.length);
+    // const tweet = await tweetRepo.get("6433c746605a6a76687b53b9");
+    // console.log(tweet);
+    // console.log(tweet.contentWithEmail);
 });

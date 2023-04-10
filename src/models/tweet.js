@@ -33,6 +33,11 @@ tweetSchema.pre("save", function (next) {
     next();
 });
 
+// Don't write arrow function () => {}, they don't have a context to the calling object i.e. they will give undefined
+tweetSchema.virtual("contentWithEmail").get(function process() {
+    return `${this.content} \nCreated By: ${this.userEmail}`;
+});
+
 const Tweet = mongoose.model("Tweet", tweetSchema);
 
 module.exports = Tweet;
