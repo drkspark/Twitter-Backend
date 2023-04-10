@@ -14,13 +14,8 @@ const tweetSchema = new mongoose.Schema(
         },
         comments: [
             {
-                content: {
-                    type: String,
-                    required: [
-                        true,
-                        "Comment can't be created without Content",
-                    ],
-                },
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Comment",
             },
         ],
     },
