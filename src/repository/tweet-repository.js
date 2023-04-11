@@ -41,18 +41,19 @@ class TweetRepository {
         }
     }
 
-    async update(tweetId, data) {
-        try {
-            const tweet = await Tweet.findByIdAndUpdate(tweetId, data, {
-                new: true,
-            });
-            // here {new: true} is used to get the updated data, by default we will be getting the last info
+    // Not gonna allow updating
+    // async update(tweetId, data) {
+    //     try {
+    //         const tweet = await Tweet.findByIdAndUpdate(tweetId, data, {
+    //             new: true,
+    //         });
+    //         // here {new: true} is used to get the updated data, by default we will be getting the last info
 
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    //         return tweet;
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     async destroy(id) {
         try {
@@ -63,10 +64,10 @@ class TweetRepository {
         }
     }
 
-    async getAll(offset, limit) {
+    async getAll() {
         try {
-            const tweet = await Tweet.find().skip(offset).limit(limit);
-            return tweet;
+            const tweets = await Tweet.find();
+            return tweets;
         } catch (error) {
             console.log(error);
         }
