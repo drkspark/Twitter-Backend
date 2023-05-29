@@ -1,24 +1,16 @@
 const express = require("express");
 const connect = require("./config/database");
 const { PORT } = require("./config/serverConfig");
+const apiRoutes = require("./routes/index");
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const HashtagRepository = require("./repository/hashtag-repository");
-const TweetService = require("./services/tweet-service");
+app.use("/api", apiRoutes);
 
 app.listen(PORT, async () => {
-    console.log("Server Started");
+    console.log(`Server Started at http://localhost:${PORT}`);
     await connect();
     console.log("MongoDB Connected");
-    const repo = new HashtagRepository();
-    const srv = new TweetService();
-    await srv.create({
-        content: "This is my #first #TWEET of this #repo #FUCKING",
-    });
-    // await repo.bulkCreate([
-    //     { title: "first" },
-    //     { title: "repo" },
-    //     { title: "tweet" },
-    // ]);
 });
