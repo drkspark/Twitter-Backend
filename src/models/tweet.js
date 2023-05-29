@@ -8,12 +8,13 @@ const tweetSchema = new mongoose.Schema(
             // max: Maximum number of the character's in the tweet
             max: [250, "Tweet can't be more than 250 characters"]
         },
-        hashtags: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Hashtag"
-            }
-        ]
+        // This is not required as we are storing the TweetId across the TAG
+        // hashtags: [
+        //     {
+        //         type: mongoose.Schema.Types.ObjectId,
+        //         ref: "Hashtag"
+        //     }
+        // ]
     },
     { timestamps: true }
 );

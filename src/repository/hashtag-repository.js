@@ -23,7 +23,7 @@ class HashtagRepository {
         try {
             const tags = await Hashtag.insertMany(data);
             return tags;
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
     }
@@ -31,6 +31,17 @@ class HashtagRepository {
     async destroy(id) {
         try {
             const response = await Hashtag.findByIdAndRemove(id);
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async findAll(tags) {
+        try {
+            const response = await Hashtag.find({
+                title: tags,
+            });
             return response;
         } catch (error) {
             console.log(error);
