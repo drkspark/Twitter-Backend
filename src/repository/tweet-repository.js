@@ -1,18 +1,14 @@
 const Tweet = require("../models/tweet");
+const CrudRepository = require("../repository/crud-repository");
 
-class TweetRepository {
+class TweetRepository extends CrudRepository {
+    constructor() {
+        super(Tweet);
+    }
+
     async create(data) {
         try {
             const tweet = await Tweet.create(data);
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async get(id) {
-        try {
-            const tweet = await Tweet.findById(id);
             return tweet;
         } catch (error) {
             console.log(error);
@@ -41,37 +37,6 @@ class TweetRepository {
         }
     }
 
-    // Not gonna allow updating
-    // async update(tweetId, data) {
-    //     try {
-    //         const tweet = await Tweet.findByIdAndUpdate(tweetId, data, {
-    //             new: true,
-    //         });
-    //         // here {new: true} is used to get the updated data, by default we will be getting the last info
-
-    //         return tweet;
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
-    async destroy(id) {
-        try {
-            const tweet = await Tweet.findByIdAndRemove(id);
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async getAll() {
-        try {
-            const tweets = await Tweet.find();
-            return tweets;
-        } catch (error) {
-            console.log(error);
-        }
-    }
 }
 
 module.exports = TweetRepository;
